@@ -1,0 +1,22 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: logiscripts-userportal-deployment
+  labels:
+    app: logiscripts-userportal
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: logiscripts-userportal
+  template:
+    metadata:
+      labels:
+        app: logiscripts-userportal
+    spec:
+      containers:
+        - name: logiscripts-userportal
+          image: vdigital/logiscripts-userportal
+          ports:
+            - name: logiscripts-userportal-port
+              containerPort: REPLACE-WITH-CONTAINER-PORT-NUMBER

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: logiscripts-userportal-service
+spec:
+  ports:
+    - port: REPLACE-WITH-PORT-TO-FOWARD-TO-30000-32767
+      nodePort: SAME-PORT-NUMBER-AS-ABOVE
+      targetPort: logiscripts-userportal-port
+      protocol: TCP
+  selector:
+    app: logiscripts-userportal
+  type: NodePort
