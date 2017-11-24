@@ -10,7 +10,7 @@ node("cicd-build-slaves") {
       //NOTIFY
       notifyTeam("STARTED");
       // CLONE THE REPOSITORY INTO THE WORKSPACE
-      git url: 'https://github.com/thevictorgreen/simpliqa4.git'
+      git url: 'https://github.com/thevictorgreen/logiscripts-userportal.git'
       sh "git rev-parse --short HEAD > .git/commit-id"
       commit_id = readFile('.git/commit-id').trim()
     }
@@ -42,7 +42,7 @@ node("cicd-build-slaves") {
         //stage("DOCKER BUILD") {
           // BUILD AND PUSH IMAGE TO DOCKERHUB
           docker.withRegistry("https://index.docker.io/v1/","cba2f3ad-7020-45db-9dc1-cd371a11fd85") {
-            def app = docker.build("vdigital/simpliqa4:${commit_id}",".").push()
+            def app = docker.build("vdigital/logiscripts-userportal:${commit_id}",".").push()
           }
         //}
       //}
